@@ -1,0 +1,176 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+
+ */
+
+@import "bootstrap";
+
+/* 全体 */
+body {
+  background-color: #ddd;
+  color: black;
+  margin: 0;
+  padding: 0;
+  /*font-family: Meiryo, sans-serif;*/
+}
+
+p, h1, h2, h3, table, ul {
+  margin: 0 0 1em;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* link */
+a:link {color: #00c; }
+a:visited { color: #00c; }
+a:hover { color: #f00; }
+
+div#container {
+  margin: 0 auto;
+  width: 780px;
+}
+
+main {
+  background-color: #eee;
+  padding: 10px 10px 10px 10px;
+}
+
+/* メニュー */
+nav.menubar ul {
+  /*background-color: #eed;
+  display: flex;
+  padding: 0;*/
+}
+
+nav.menubar ul li {
+  /*float: left;
+  list-style: none;
+  display: block;
+  text-align: center;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  width: 20%;
+  border-right: 0.5px solid;
+  box-sizing: border-box;
+  font-size: 20px;*/
+}
+
+nav.menubar ul li:last-child {
+  /*border-right: none;*/
+}
+
+/*nav.menubar a {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}*/
+
+/*nav.menubar .active {
+  background-color: #888;
+}*/
+
+nav.menubar a:link { color: #ccc; }
+nav.munebar a:visited { color: #ccc }
+
+ul.toolbar {
+  padding: 15px 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+}
+
+ul.toolbar li {
+  background-color: #cdd;
+  float: left;
+  padding: 0 5px;
+  border-right: 1.5px solid black;
+}
+
+ul.toolbar li:last-child {
+  border-right: none;
+}
+
+$border-color: #499;
+
+nav.pagination {
+  /*font-size: 75%;*/
+  /*padding: 4px 8px;
+  /*border: 1px solid $border-color;*/
+  word-spacing: 4px;
+
+  span.page {
+    margin-right: 5px;
+  }
+
+  span.prev {
+    margin-right: 5px;
+  }
+
+  span.current {
+    font-weight: bold;
+  }
+}
+
+/* フッター */
+footer {
+  padding: 5px 0;
+  border-top: 3px solid;
+  text-align: center;
+}
+
+.form {
+  padding-bottom: 10px;
+}
+
+.w-150px {
+  width: 150px !important;
+}
+
+.w-200px {
+  width: 200px !important;
+}
+
+.user-form-auto {
+  display: inline-block;
+  width: auto;
+}
+
+.image {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%;
+  border-radius: 50%;
+}
+
+.image img{
+  position: absolute;
+}
+
+.contain {
+  object-fit: contain;
+}
+
+.field_with_errors {
+  input {
+    @extend .is-invalid;
+  }
+}

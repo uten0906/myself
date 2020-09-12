@@ -1,0 +1,47 @@
+<%= render "shared/errors", obj: @user %>
+
+<div class>
+  <div class="form-group">
+    <div><%= form.label :new_profile_picture %></div>
+    <div>
+      <div><%= form.file_field :new_profile_picture, class:"form-control-file" %></div>
+      <% if @user.profile_picture.attached? %>
+        <div>
+          <%= image_tag @user.profile_picture %>
+          <%= form.check_box :remove_profile_picture %>
+          <%= form.label :remove_profile_picture %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div><%= form.label :name %></div>
+    <div><%= form.text_field :name, :placeholder => "例:Taro", class:"form-control form-control-lg", require: true %></div>
+  </div>
+  <div class="form-group">
+    <div><%= form.label :email %></div>
+    <div><%= form.text_field :email, :placeholder => "例:Taro@example.com", class:"form-control form-control-lg", required: true %></div>
+  </div>
+  <% if @user.new_record? %>
+    <div class="form-group">
+      <div><%= form.label :password, "パスワード" %></div>
+      <div><%= form.text_field :password, :placeholder => "例:myself!", class:"form-control form-control-lg", require: true %></div>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <div><%= form.label :birthday, for: "user_birthday_1i" %></div>
+    <div><%= form.date_select :birthday,
+      { start_year: 1940,
+      end_year: Time.current.year,
+      use_short_month: true,
+      use_month_numbers: true,
+      date_separator: "/" },
+      class: "form-control form-control-lg user-form-auto" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <% options = [["男性", 1],["女性", 2],["その他", 3]] %>
+    <div><%= User.human_attribute_name(:sex) %></div>
+    <div><%= form.select :sex, options, {}, class: "form-control form-control-lg user-form-auto" %></div>
+  </div>
+</div>

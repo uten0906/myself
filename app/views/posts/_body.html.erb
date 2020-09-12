@@ -1,0 +1,31 @@
+<% if @posts.present? %>
+  <% @posts.each do |post| %>
+    <div class="post_form">
+      <% if post.user.profile_picture.attached? %>
+        <%= image_tag post.user.profile_picture, class:"rounded-circle" %>
+      <% else %>
+        <%= image_tag "default_user.jpeg", class:"rounded-circle" %>
+      <% end %>
+      <h3 class="name"><%= post.user.name %></h3>
+      <p class="body">
+        <%= truncate(post.body, length: 40) %>
+        <% if post.body.length > 40 %>
+          <%= link_to "もっと読む", post %>
+        <% end %>
+      </p>
+      <div class="like">
+      <% if (count = post.likes.count) > 0 %>
+        <span>★<%= count %></span>
+      <% end %>
+      <% if current_user && current_user.likable_for?(post) %>
+        <%= link_to "★いいねをする", [:like, post], method: :patch, class: "button" %>
+      <% elsif current_user && current_user.unlikable_for?(post) %>
+        <%= link_to "★いいねを削除する", [:unlike, post], method: :patch, data: { confirm: "削除しますか?"} %>
+      <% end %>
+      </div>
+    </div>
+  <% end %>
+  <%= paginate @posts %>
+<% else %>
+  <p>投稿がありません。</p>
+<% end %>

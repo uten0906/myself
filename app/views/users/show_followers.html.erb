@@ -1,0 +1,11 @@
+<% @page_title = @user.name + "さんのフォロワー" %>
+
+<h1 class="text-center"><%= @page_title %></h1>
+
+<div class="mx-auto col-12 col-lg-10">
+  <% if @users.present? %>
+    <%= render "info" %>
+  <% else %>
+    <p>フォロワーはいません</p>
+  <% end %>
+</div>

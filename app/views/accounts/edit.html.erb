@@ -1,0 +1,32 @@
+<% @page_title = "アカウント情報の編集" %>
+<h1 class="text-center"><%= @page_title %></h1>
+
+<div class="mx-auto col-12 col-lg-8">
+  <%= form_for @user, as: "account", url: :account do |form| %>
+    <%= render "shared/user_form", form: form %>
+    <div><%= form.submit "更新", class: "btn btn-primary btn-lg mt-5"  %></div>
+  <% end %>
+</div>
+
+<script>
+    // 無効なフィールドがある場合にフォーム送信を無効にするスターターJavaScriptの例
+    (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+            // カスタムブートストラップ検証スタイルを適用するすべてのフォームを取得
+            var forms = document.getElementsByClassName('needs-validation');
+            // ループして帰順を防ぐ
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                // submitボタンを押したら以下を実行
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

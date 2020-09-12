@@ -1,0 +1,103 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.user {
+  background-color: #eff;
+  display: block;
+  padding: 0 0 5px 10px;
+  height: 60px;
+  line-height: 60px;
+}
+
+.user img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 60px;
+}
+
+.profile h3 {
+  background-color: #bbb;
+}
+
+.profile img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 60px;
+}
+
+.attr {
+  width: 600px;
+}
+
+/*tr {
+  background-color: red;
+}*/
+
+th {
+  /*background-color: #ddd;*/
+  padding: 15px;
+  width: 30%;
+  text-align: right;
+}
+
+td {
+  /*background-color: #ddd;*/
+  width: 70%;
+}
+
+/*input[type="text"], textarea {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  width: 300px;
+  font-size: 16px;
+}
+
+//input[type="text"]:focus, texture:focus {
+  box-shadow: 0 0 7px #3498db;
+  border: 1px solid #3498db;
+}
+
+//input[type="password"], textarea {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  width: 300px;
+  font-size: 16px;
+}
+
+//input[type="password"]:focus, texture:focus {
+  box-shadow: 0 0 7px #3498db;
+  border: 1px solid #3498db;
+}
+
+//input[type="submit"] {
+  background-color: white;
+  padding: 8px 15px;
+  margin-left: 185px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+//input[type="submit"]:hover {
+  background-color: #ddd;
+  padding: 8px 15px;
+  margin-left: 185px;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 0 7px #3498db;
+  border: 2px solid #3498db;
+}*/
+
+select {
+  padding: 5px;
+}
+
+.user_form img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 60px;
+}

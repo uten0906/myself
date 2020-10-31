@@ -21,7 +21,14 @@
         <% if flash.alert %>
           <p class="alert alert alert-warning"><%= flash.alert %></p>
         <% end %>
-        <%= yield %>
+        <div class="d-flex">
+          <div class="col-lg-8 col-xl-9">
+            <%= yield %>
+          </div>
+          <aside class="d-none d-lg-block col-lg-4 col-xl-3">
+            <%= render "shared/sidebar" %>
+          </aside>
+        </div>
       </main>
       <footer>
         <%= render "shared/footer" %>

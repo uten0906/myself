@@ -6,15 +6,15 @@
 #
 default: &default
   adapter: mysql2
+  charset: utf8
   encoding: utf8
-  pool: 5
-  username: yuma
-  password: uten0906
-  
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("MYSQL_USER") { 'root' } %>
+  password: <%= ENV.fetch("MYSQL_PASSWORD") { 'password' } %>
+  host: db
 
 development:
   <<: *default
-  host: db
   database: docker_development
 
 # Warning: The database defined as "test" will be erased and

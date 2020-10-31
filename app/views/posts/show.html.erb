@@ -1,11 +1,11 @@
 <% @page_title = "投稿の詳細" %>
 <h1 class="text-center"><%= @page_title %></h1>
 
-<div class="post mx-auto col-12 col-lg-10">
+<div class="post mx-auto col-12">
   <h2>
-  <%= @post.user.name %>
+    <%= @post.user.name %>
   </h2>
-  <%= @post.body %>
+  <%= safe_join(@post.body.split("\n"),tag(:br)) %>
   <div class="col-12">
   <% if @post.post_pictures.attached? %>
     <% if @post.post_pictures.size == 1 %>
@@ -34,10 +34,6 @@
   <% end %>
   </div>
   <% if current_user == @post.user %>
-    <ul class="toolbar">
-      <%= menu_link_to "投稿を編集", :edit_post %>
-      <%= menu_link_to "投稿を削除", @post, method: :delete, data: { confirm: "本当に削除しますか？" } %>
-    </ul>
     <div class="d-flex justify-content-end">
       <%= link_to "投稿を編集", :edit_post, class:"btn btn-outline-secondary" %>
       <%= link_to "投稿を削除", @post, method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-outline-secondary ml-1" %>

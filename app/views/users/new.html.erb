@@ -1,8 +1,8 @@
 <% @page_title = "ユーザー情報の登録" %>
 
-<h1><%= @page_title %></h1>
+<h1 class="text-center"><%= @page_title %></h1>
 
-<div class="mx-auto col-12 col-lg-8">
+<div class="mx-auto col-12 col-xl-10">
   <%= form_for @user do |form| %>
     <%= render "shared/user_form", form: form %>
     <div><%= form.submit "登録", class: "btn btn-primary btn-lg mt-5" %></div>

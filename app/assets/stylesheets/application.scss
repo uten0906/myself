@@ -38,14 +38,17 @@ a:link {color: #00c; }
 a:visited { color: #00c; }
 a:hover { color: #f00; }
 
+/*
 div#container {
   margin: 0 auto;
-  width: 780px;
+  width: 750px;
 }
+*/
 
 main {
   background-color: #eee;
-  padding: 10px 10px 10px 10px;
+  min-height: 480px;
+  /*padding: 10px 10px 10px 10px;*/
 }
 
 /* メニュー */

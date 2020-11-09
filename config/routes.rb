@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
-  resource :session, only: [:create, :destroy]
+  resource :session, only: [:create, :destroy] do
+    post "guest_login", on: :collection
+  end
   resource :account, only: [:show, :edit, :update, :destroy]
   resource :password, only: [:show, :edit, :update]
 

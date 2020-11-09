@@ -17,6 +17,7 @@
       <ul class="navbar-nav">
         <%= menu_link_to "新規登録", :new_user, class: "nav-item nav-link" %>
         <%= menu_link_to "ログイン", :login_form_users, class: "nav-item nav-link" %>
+        <%= menu_link_to "簡易ログイン", :guest_login_session, method: :post, class: "nav-item nav-link" %>
       </ul>
     </div>
   <% end %>

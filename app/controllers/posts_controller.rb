@@ -29,6 +29,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: "投稿しました。"
     else
+      flash.alert = "エラーがあります。"
       render "new"
     end
   end
@@ -39,6 +40,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: "投稿を編集しました。"
     else
+      flash.alert = "エラーがあります。"
       render "edit"
     end
   end

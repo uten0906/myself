@@ -1,10 +1,10 @@
-<%= render "shared/errors", obj: @user %>
+<!--<%= render "shared/errors", obj: @user %>-->
 
 <div class>
   <div class="form-group">
-    <div><%= form.label :new_profile_picture %></div>
+    <%= form.label :new_profile_picture %>
     <div>
-      <div><%= form.file_field :new_profile_picture, class:"form-control-file" %></div>
+      <%= form.file_field :new_profile_picture, class:"form-control-file" %>
       <% if @user.profile_picture.attached? %>
         <div>
           <%= image_tag @user.profile_picture %>
@@ -17,15 +17,24 @@
   <div class="form-group">
     <div><%= form.label :name %></div>
     <div><%= form.text_field :name, :placeholder => "例:Taro", class:"form-control form-control-lg", require: true %></div>
+    <% if @user.errors.include?(:name) %>
+      <p class="text-danger"><%= @user.errors.full_messages_for(:name).first %></p>
+    <% end %>
   </div>
   <div class="form-group">
     <div><%= form.label :email %></div>
     <div><%= form.text_field :email, :placeholder => "例:Taro@example.com", class:"form-control form-control-lg", required: true %></div>
+    <% if @user.errors.include?(:email) %>
+      <p class="text-danger"><%= @user.errors.full_messages_for(:email).first %></p>
+    <% end %>
   </div>
   <% if @user.new_record? %>
     <div class="form-group">
       <div><%= form.label :password, "パスワード" %></div>
       <div><%= form.text_field :password, :placeholder => "例:myself!", class:"form-control form-control-lg", require: true %></div>
+      <% if @user.errors.include?(:password) %>
+      <p class="text-danger"><%= @user.errors.full_messages_for(:password).first %></p>
+    <% end %>
     </div>
   <% end %>
   <div class="form-group">

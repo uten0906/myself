@@ -51,6 +51,23 @@ main {
   /*padding: 10px 10px 10px 10px;*/
 }
 
+/* アニメーション*/
+p.notice.fadeout {
+  opacity: 0;
+  transition: 1s;
+}
+
+.animationTarget {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 1s;
+}
+
+.animationTarget.show {
+  opacity: 1;
+  transform: none;
+}
+
 /* メニュー */
 nav.menubar ul {
   /*background-color: #eed;
@@ -114,6 +131,7 @@ ul.toolbar li:last-child {
 
 $border-color: #499;
 
+/* pagination */
 nav.pagination {
   /*font-size: 75%;*/
   /*padding: 4px 8px;

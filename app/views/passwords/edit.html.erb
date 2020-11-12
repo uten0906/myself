@@ -3,19 +3,28 @@
 
 <div class="mx-auto col-12 col-lg-8">
 <%= form_for @user, as: "account", url: :password do |form| %>
-  <%= render "shared/errors", obj: @user %>
+  <!--<%= render "shared/errors", obj: @user %>-->
   <div>
     <div class="form-group">
       <div><%= form.label :current_password %></div>
       <div><%= form.password_field :current_password, class: "form-control form-control-lg" %></div>
+      <% if @user.errors.include?(:current_password) %>
+        <p class="text-danger"><%= @user.errors.full_messages_for(:current_password).first %></p>
+      <% end %>
     </div>
     <div class="form-group">
       <div><%= form.label :password %></div>
       <div><%= form.password_field :password, class: "form-control form-control-lg"  %></div>
+      <% if @user.errors.include?(:password) %>
+        <p class="text-danger"><%= @user.errors.full_messages_for(:password).first %></p>
+      <% end %>
     </div>
     <div class="form-group">
       <div><%= form.label :password_confirmation %></div>
       <div><%= form.password_field :password_confirmation, class: "form-control form-control-lg"  %></div>
+      <% if @user.errors.include?(:password_confirmation) %>
+        <p class="text-danger"><%= @user.errors.full_messages_for(:password_confirmation).first %></p>
+      <% end %>
     </div>
   </div>
   <div><%= form.submit "変更", class: "btn btn-primary btn-lg mt-5" %></div>

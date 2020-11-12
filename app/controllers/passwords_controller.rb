@@ -19,14 +19,17 @@ class PasswordsController < ApplicationController
         if @user.save
           redirect_to :account, notice: "パスワードを変更しました。"
         else
+          flash.alert = "エラーがあります。"
           render "edit"
         end
       else
         @user.errors.add(:current_password, :wrong)
+        flash.alert = "エラーがあります。"
         render "edit"
       end
     else
       @user.errors.add(:current_password, :empty)
+      flash.alert = "エラーがあります。"
       render "edit"
     end
   end

@@ -25,6 +25,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to account_path, notice: "ユーザー情報を登録しました。"
     else
+      flash.alert = "エラーがあります。"
       render "new"
     end
   end
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user, notice: "ユーザー情報を更新しました。"
     else
+      flash.alert = "エラーがあります。"
       render "edit"
     end
   end

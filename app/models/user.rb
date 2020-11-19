@@ -59,6 +59,16 @@ class User < ApplicationRecord
     self.following_relationships.find_by(following_id: other_user.id).destroy
   end
 
+  def self.guest
+    find_or_create_by!(name: 'guest') do |user|
+      user.assign_attributes({
+      email: "guest@example.com",
+      birthday: "1990-01-01",
+      sex: 3})
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
   class << self
     def search(query)
       rel = order("id")

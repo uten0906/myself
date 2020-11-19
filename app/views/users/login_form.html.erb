@@ -4,8 +4,8 @@
 <div class="mx-auto col-12 col-xl-10">
   <%= form_with( url: session_path, local: true) do |form| %>
     <div class="form-group">
-      <%= form.label :name, "ユーザー名" %>
-      <%= form.text_field :name, class:"form-control form-control-lg" %>
+      <%= form.label :email, "メールアドレス" %>
+      <%= form.text_field :email, class:"form-control form-control-lg" %>
     </div>
     <div>
       <%= form.label :password, "パスワード" %>

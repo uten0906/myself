@@ -1,12 +1,12 @@
 $(document).on("turbolinks:load", function() {
-  const alertElement = document.querySelector(".alert");
-  function alertFadeout() {
+  const fadeoutElement = document.querySelector(".fadeoutTarget");
+  function flashFadeout() {
     setTimeout(function() {
-      alertElement.classList.add("fadeout");
+      fadeoutElement.classList.add("fadeout");
     }, 5000);
   }
-  if (alertElement != null) {
-    window.onload = alertFadeout();
+  if (fadeoutElement != null) {
+    window.onload = flashFadeout();
   }
 
   const targetElement = document.querySelectorAll(".animationTarget");

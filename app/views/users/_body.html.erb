@@ -11,34 +11,35 @@
         </div>
       <% end %>
     </div>
-    <div class="col-8 d-xl-flex flex-row flex-wrap align-self-center">
-      <div class="col-xl-6">
+    <!--<div class="col-8 d-xl-flex flex-row flex-wrap align-self-center">-->
+    <div class="col-8 pl-5 align-self-center">
+      <!--<div class="col-xl-6">-->
         <div class="mb-1">
           <h3>ユーザー名</h3>
-          <h4 class="ml-3"><%= @user.name %></h4>
+          <h4 class="pl-3"><%= @user.name %></h4>
         </div>
-        <div class="mb-1">
+        <!--<div class="mb-1">
           <h3>メールアドレス</h3>
           <h4 class="ml-3"><%= @user.email %></h4>
-        </div>
-      </div>
-      <div class="col-xl-6">
+        </div>-->
+      <!--</div>-->
+      <!--<div class="col-xl-6">-->
         <div class="mb-1">
           <h3>誕生日</h3>
-          <h4 class="ml-3"><%= @user.birthday&.strftime("%Y年%m月%d日") %></h4>
+          <h4 class="pl-3"><%= @user.birthday&.strftime("%Y年%m月%d日") %></h4>
         </div>
         <div class="mb-1">
           <h3>性別</h3>
           <% if @user.sex == 1 %>
-            <h4 class="ml-3">男</h4>
+            <h4 class="pl-3">男</h4>
           <% elsif @user.sex == 2 %>
-            <h4 class="ml-3">女</h4>
+            <h4 class="pl-3">女</h4>
           <% else %>
-            <h4 class="ml-3">その他</h4>
+            <h4 class="pl-3">その他</h4>
           <% end %>
         </div>
-      </div>
-      <div class="d-none d-xl-block">
+      <!--</div>-->
+      <!--<div class="d-none d-xl-block">
         <div class="mt-5 ml-3">
           <div class="d-flex">
             <%= link_to "フォロー中(#{@user.followings.count})", followings_user_path(@user), class:"btn btn-info btn-lg w-200px mr-5" %>
@@ -56,10 +57,10 @@
             <% end %>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
-  <div class="d-block d-xl-none">
+  <div class="d-block">
     <div class="my-3">
       <div class="d-flex justify-content-center">
         <%= link_to "フォロー中(#{@user.followings.count})", followings_user_path(@user), class:"btn btn-info btn-lg w-200px mr-3 mr-md-5" %>
@@ -70,9 +71,17 @@
       <div class="d-flex justify-content-center">
         <% if current_user && @user != current_user %>
           <% if current_user.following?(@user) %>
-            <%= render "unfollow" %>
+            <!--<%= render "unfollow" %>-->
+            <%= form_with(model: current_user.following_relationships.find_by(following_id: @user.id), method: :delete) do |f| %>
+              <%= f.hidden_field :following_id %>
+              <%= f.submit "フォローをやめる", class: "btn btn-outline-secondary btn-lg w-200px" %>
+            <% end %>
           <% else %>
-            <%= render "follow" %>
+            <!--<%= render "follow" %>-->
+            <%= form_with(model: current_user.following_relationships.build) do |f| %>
+              <%= f.hidden_field :following_id, value: @user.id %>
+              <%= f.submit "フォローする", class: "btn btn-outline-secondary btn-lg w-200px" %>
+            <% end %>
           <% end %>
         <% end %>
       </div>

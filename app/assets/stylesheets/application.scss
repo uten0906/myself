@@ -52,7 +52,7 @@ main {
 }
 
 /* アニメーション*/
-p.notice.fadeout {
+p.fadeoutTarget.fadeout {
   opacity: 0;
   transition: 1s;
 }
@@ -162,6 +162,7 @@ footer {
   padding-bottom: 10px;
 }
 
+/* カスタムbootstrap*/
 .w-150px {
   width: 150px !important;
 }

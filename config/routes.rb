@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :posts do
     patch "like", "unlike", on: :member
     get "liked", on: :collection
-    resources :images, controller: "post_images"
+    #resources :images, controller: "post_images"
   end
 
 end

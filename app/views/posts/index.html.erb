@@ -2,7 +2,9 @@
 <h1 class="text-center"><%= @page_title %></h1>
 
 <% if current_user %>
-  <h3 class="link text-center"><%= link_to "投稿の新規作成", :new_post %></h3>
+  <div class="text-center">
+    <%= link_to "投稿の新規作成", :new_post ,class: "btn btn-outline-info btn-lg" %>
+  </div>
 <% end %>
 
 <%= render "shared/post_body" %>

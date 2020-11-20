@@ -2,11 +2,13 @@
 
 <h1 class="text-center"><%= @page_title %></h1>
 
-<div class="post mx-auto col-12">
-  <h2>
+<div class="post mx-auto col-12 border rounded rounded-lg bg-white p-3">
+  <h2 class="border-bottom pb-1">
     <%= @post.user.name %>
   </h2>
-  <%= safe_join(@post.body.split("\n"),tag(:br)) %>
+  <div class="">
+    <%= safe_join(@post.body.split("\n"),tag(:br)) %>
+  </div>
   <div class="col-12">
   <% if @post.post_pictures.attached? %>
     <% if @post.post_pictures.size == 1 %>

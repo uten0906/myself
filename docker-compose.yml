@@ -4,11 +4,8 @@ services:
   db:
     image: mysql:5.7
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: yuma
-      MYSQL_PASSWORD: uten0906
-      MYSQL_DATABASE: docker_development
+    env_file:
+      - ./.env
     volumes:
       - mysql-data:/var/lib/mysql
     ports:
@@ -16,6 +13,8 @@ services:
 
   app:
     build: .
+    env_file:
+      - ./.env
     command: bundle exec puma -C config/puma.rb
     init: true
     volumes:

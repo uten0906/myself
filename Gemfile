@@ -42,6 +42,8 @@ gem 'rails-i18n', '~> 5.1'
 gem 'kaminari'
 gem 'kaminari-i18n'
 
+gem 'dotenv-rails'
+
 # bootstrap
 gem 'bootstrap', '~> 4.1', '>= 4.1.3'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'

@@ -43,6 +43,7 @@ gem 'kaminari'
 gem 'kaminari-i18n'
 
 gem 'dotenv-rails'
+gem 'recaptcha', require: "recaptcha/rails"
 
 # bootstrap
 gem 'bootstrap', '~> 4.1', '>= 4.1.3'

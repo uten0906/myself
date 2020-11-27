@@ -4,6 +4,17 @@
 <div class="mx-auto col-12 col-xl-10">
   <%= form_for @user do |form| %>
     <%= render "shared/user_form", form: form %>
+    <!--
+    <% ary = [:name, :email, :password] %>
+    <%= @user.errors.all?{ |i| ary.include?(i) } %>
+    <%= @user.errors.details %>
+    <%= @user.errors.include?(:base) %>
+    <% if @user.errors.include?(:base) %>
+      <p class="text-danger"><%= @user.errors.full_messages_for(:base).first %></p>
+    <% end %>
+    -->
+    <p class="text-danger"><%= flash[:recaptcha_error] %></p>
+    <%= recaptcha_tags %>
     <div><%= form.submit "登録", class: "btn btn-primary btn-lg mt-5" %></div>
   <% end %>
 </div>

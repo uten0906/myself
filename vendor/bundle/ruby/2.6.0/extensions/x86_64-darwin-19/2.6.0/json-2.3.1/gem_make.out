@@ -1,0 +1,13 @@
+current directory: /Users/Yuma/Desktop/programing/myself/vendor/bundle/ruby/2.6.0/gems/json-2.3.1/ext/json
+/Users/Yuma/.rbenv/versions/2.6.3/bin/ruby -I /Users/Yuma/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20201120-4470-168y9yf.rb extconf.rb
+creating Makefile
+
+current directory: /Users/Yuma/Desktop/programing/myself/vendor/bundle/ruby/2.6.0/gems/json-2.3.1/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/Yuma/Desktop/programing/myself/vendor/bundle/ruby/2.6.0/gems/json-2.3.1/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/Yuma/Desktop/programing/myself/vendor/bundle/ruby/2.6.0/gems/json-2.3.1/ext/json
+make "DESTDIR=" install

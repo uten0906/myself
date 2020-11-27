@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if verify_recaptcha() && @user.save
       session[:user_id] = @user.id
       redirect_to account_path, notice: "ユーザー情報を登録しました。"
     else

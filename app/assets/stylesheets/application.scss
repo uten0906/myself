@@ -23,32 +23,26 @@ body {
   /*font-family: Meiryo, sans-serif;*/
 }
 
-p, h1, h2, h3, table, ul {
+p, h1, h2, h3, h4, h5, h6, table, ul {
   margin: 0 0 1em;
 }
 
+/*
 nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
+*/
 
 /* link */
 a:link {color: #00c; }
 a:visited { color: #00c; }
 a:hover { color: #f00; }
 
-/*
-div#container {
-  margin: 0 auto;
-  width: 750px;
-}
-*/
-
 main {
   background-color: #eee;
   min-height: 480px;
-  /*padding: 10px 10px 10px 10px;*/
 }
 
 /* アニメーション*/
@@ -107,10 +101,12 @@ nav.menubar ul li:last-child {
   background-color: #888;
 }*/
 
+/*
 nav.menubar a:link { color: #ccc; }
 nav.munebar a:visited { color: #ccc }
+*/
 
-ul.toolbar {
+/*ul.toolbar {
   padding: 15px 0;
   display: flex;
   justify-content: flex-end;
@@ -127,11 +123,11 @@ ul.toolbar li {
 
 ul.toolbar li:last-child {
   border-right: none;
-}
+}*/
 
 $border-color: #499;
 
-/* pagination */
+/* ページネーション */
 nav.pagination {
   /*font-size: 75%;*/
   /*padding: 4px 8px;

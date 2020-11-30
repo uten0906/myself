@@ -1,0 +1,10 @@
+<% @page_title = "管理ぺージ" %>
+<h1 class="text-center"><%= @page_title %></h1>
+
+<div class="p-3 border rounded rounded-lg bg-white">
+  <h4 class="text-center">こちらは管理専用ページです。</h4>
+  <div class="text-center">
+    <%= link_to "ユーザー管理", :admin_users, class: "btn btn-outline-warning btn-lg w-200px mr-3" %>
+    <%= link_to "投稿管理", :admin_posts, class: "btn btn-outline-warning btn-lg w-200px" %>
+  </div>
+</div>

@@ -26,19 +26,25 @@
               <%= post.body %>
             </p>
             <div class="d-flex d-row justify-content-between">
-              <div class="like">
-              <span>★<%= post.likes.count %></span>
-              <% if current_user && current_user.likable_for?(post) %>
-                <%= link_to "★いいねをする", [:like, post], method: :patch, class: "button" %>
-              <% elsif current_user && current_user.unlikable_for?(post) %>
-                <%= link_to "★いいねを削除する", [:unlike, post], method: :patch, data: { confirm: "削除しますか?"} %>
-              <% end %>
+              <div class="d-flex d-row">
+                <div class="like">
+                  <span>★<%= post.likes.count %></span>
+                  <% if current_user && current_user.likable_for?(post) %>
+                    <%= link_to "★いいねをする", [:like, post], method: :patch, class: "button" %>
+                  <% elsif current_user && current_user.unlikable_for?(post) %>
+                    <%= link_to "★いいねを削除する", [:unlike, post], method: :patch, data: { confirm: "削除しますか?"} %>
+                  <% end %>
+                </div>
+                <% if post.post_pictures.attached? %>
+                  <p class="ml-2 text-info">画像有</p>
+                <% end %>
               </div>
-              <% if post.post_pictures.attached? %>
-                <p>画像あり</p>
+              <div class="d-flex d-row">
+              <% if controller.kind_of?(Admin::PostsController) %>
+                <%= link_to "詳細を見る", [:admin, post], class: "btn btn-outline-info" %>
+              <% else %>
+                <%= link_to "詳細を見る", post, class: "btn btn-outline-info" %>
               <% end %>
-              <div>
-                <%= link_to "詳細を見る", post %>
               </div>
             </div>
           </div>

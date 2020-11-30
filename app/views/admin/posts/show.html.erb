@@ -44,11 +44,9 @@
         <%= link_to "★いいねを削除する", [:unlike, @post], method: :patch, data: { confirm: "削除しますか?"} %>
       <% end %>
     </div>
-    <% if current_user == @post.user %>
-      <div class="d-flex justify-content-end">
-        <%= link_to "投稿を編集", :edit_post, class:"btn btn-outline-secondary" %>
-        <%= link_to "投稿を削除", @post, method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-outline-secondary ml-1" %>
-      </div>
-    <% end %>
+    <div class="d-flex justify-content-end">
+      <%= link_to "投稿を編集", [:edit, :admin, @post], class:"btn btn-outline-secondary" %>
+      <%= link_to "投稿を削除", [:admin, @post], method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-outline-secondary ml-1" %>
+    </div>
   </div>
 </div>

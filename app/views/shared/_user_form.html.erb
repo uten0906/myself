@@ -1,6 +1,4 @@
-<!--<%= render "shared/errors", obj: @user %>-->
-
-<div class>
+<div>
   <div class="form-group">
     <%= form.label :new_profile_picture %>
     <div>
@@ -53,4 +51,10 @@
     <div><%= User.human_attribute_name(:sex) %></div>
     <div><%= form.select :sex, options, {}, class: "form-control form-control-lg user-form-auto" %></div>
   </div>
+  <% if controller.kind_of?(Admin::UsersController) %>
+    <div class="form-check">
+      <div><%= form.check_box :administrator, class:"form-check-input" %></div>
+      <div><%= form.label :administrator, "管理者", class:"form-check-label" %></div>
+    </div>
+  <% end %>
 </div>

@@ -56,5 +56,11 @@
         <% end %>
       </div>
     </div>
+    <% if current_user.administrator? %>
+      <div class="d-flex justify-content-center my-3">
+        <%= link_to "ユーザーの編集", [:edit, :admin, @user], class:"btn btn-outline-warning btn-lg w-200px mr-3 mr-md-5" %>
+        <%= link_to "ユーザーの削除", [:admin, @user], method: :delete, data: { confirm: "本当に削除しますか？"}, class:"btn btn-outline-warning btn-lg w-200px" %>
+      </div>
+    <% end %>
   </div>
 </div>

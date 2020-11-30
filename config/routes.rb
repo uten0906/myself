@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   root "top#index"
   get "about" => "top#about"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users do
+  resources :users, only: [:index, :show, :new, :create] do
     get "search", on: :collection
     get "login_form", on: :collection
-    resources :posts, only: [:index]
     member do
       get :followings, :followers
     end
@@ -23,7 +22,13 @@ Rails.application.routes.draw do
   resources :posts do
     patch "like", "unlike", on: :member
     get "liked", on: :collection
-    #resources :images, controller: "post_images"
   end
 
+  namespace :admin do
+    root "top#index"
+    resources :users do
+      get "search", on: :collection
+    end
+    resources :posts
+  end
 end

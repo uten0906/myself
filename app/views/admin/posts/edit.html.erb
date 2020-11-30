@@ -1,0 +1,13 @@
+<% @page_title = "投稿の編集" %>
+<h1 class="text-center"><%= @page_title %></h1>
+
+<div class="mx-auto col-12 col-lg-10">
+  <%= form_for [:admin, @post] do |form| %>
+    <div><%= form.label :body %></div>
+    <div><%= form.text_area :body, class: "form-control form-control-lg" %></div>
+    <% if @post.errors.include?(:body) %>
+      <p class="text-danger"><%= @post.errors.full_messages_for(:body).first %></p>
+    <% end %>
+    <div><%= form.submit "変更", class: "btn btn-primary btn-lg mt-5" %></div>
+  <% end %>
+</div>

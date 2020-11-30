@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < Admin::Base
   before_action :login_required, only: [:edit, :update, :destroy]
 
   def index
@@ -17,13 +17,14 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @user.administrator = true
   end
 
   def create
     @user = User.new(user_params)
     if verify_recaptcha() && @user.save
-      session[:user_id] = @user.id
-      redirect_to account_path, notice: "ユーザー情報を登録しました。"
+      #session[:user_id] = @user.id
+      redirect_to [:admin, @user], notice: "ユーザー情報を登録しました。"
     else
       flash.alert = "エラーがあります。"
       render "new"
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.assign_attributes(user_params)
     if @user.save
-      redirect_to @user, notice: "ユーザー情報を更新しました。"
+      redirect_to [:admin, @user], notice: "ユーザー情報を更新しました。"
     else
       flash.alert = "エラーがあります。"
       render "edit"
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to :users, notice: "ユーザー情報を削除しました。"
+    redirect_to :admin_users, notice: "ユーザー情報を削除しました。"
   end
 
   def search

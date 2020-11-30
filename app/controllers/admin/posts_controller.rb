@@ -1,8 +1,8 @@
-class PostsController < ApplicationController
+class Admin::PostsController < Admin::Base
   before_action :login_required, except: [:index, :show]
 
   def index
-    @posts = Post.all
+    @posts= Post.all
     @posts = @posts.order(created_at: :desc).page(params[:page]).per(10)
   end
 
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
-      redirect_to @post, notice: "投稿しました。"
+      redirect_to [:admin, @post], notice: "投稿しました。"
     else
       flash.alert = "エラーがあります。"
       render "new"
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
     @post.assign_attributes(post_params)
     if @post.save
-      redirect_to @post, notice: "投稿を編集しました。"
+      redirect_to [:admin, @post], notice: "投稿を編集しました。"
     else
       flash.alert = "エラーがあります。"
       render "edit"
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to :posts, notice: "投稿を削除しました。"
+    redirect_to :admin_posts, notice: "投稿を削除しました。"
   end
 
   def like

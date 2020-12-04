@@ -5,7 +5,7 @@
       <%= form.file_field :new_profile_picture, class:"form-control-file" %>
       <% if @user.profile_picture.attached? %>
         <div>
-          <%= image_tag @user.profile_picture %>
+          <%= image_tag @user.profile_picture, class:"w-100 contain img-fulid" %>
           <%= form.check_box :remove_profile_picture %>
           <%= form.label :remove_profile_picture %>
         </div>

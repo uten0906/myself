@@ -17,6 +17,7 @@ class AccountsController < ApplicationController
     if @user.save
       redirect_to :account, notice: "アカウント情報を変更しました。"
     else
+      flash.alert = "エラーがあります。"
       render "edit"
     end
   end

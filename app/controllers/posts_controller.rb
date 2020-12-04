@@ -32,6 +32,12 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
     @post.assign_attributes(post_params)
+    if params[:post][:remove_post_pictures]
+      params[:post][:remove_post_pictures].each do |picture_id|
+        picture = @post.post_pictures.find(picture_id)
+        picture.purge
+      end
+    end
     if @post.save
       redirect_to @post, notice: "投稿を編集しました。"
     else

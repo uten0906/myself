@@ -4,6 +4,7 @@ RUN apt-get update\
   && apt-get install -y --no-install-recommends\
   libpq-dev\
   nodejs\
+  vim\
   mariadb-client\
   build-essential\
   && apt-get clean\

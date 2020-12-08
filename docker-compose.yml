@@ -1,29 +1,29 @@
 version: '3'
 
 services:
-  db:
-    image: mysql:5.7
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    env_file:
-      - ./.env
-    volumes:
-      - mysql-data:/var/lib/mysql
-    ports:
-      - "4306:3306"
+  # db:
+  #   image: mysql:5.7
+  #   command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+  #   env_file:
+  #     - ./.env
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  #   ports:
+  #     - "4306:3306"
 
   app:
     build: .
     env_file:
       - ./.env
-    command: bundle exec puma -C config/puma.rb
+    command: bundle exec puma -C config/puma.rb -e production
     init: true
     volumes:
       - .:/myproject
       - public-data:/myproject/public
       - tmp-data:/myproject/tmp
       - log-data:/myproject/log
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
 
   web:
     build:
@@ -34,11 +34,11 @@ services:
       - tmp-data:/myproject/tmp
     ports:
       - 80:80
-    depends_on:
-      - app
+    # depends_on:
+    #   - app
 
 volumes:
-  mysql-data:
+  # mysql-data:
   public-data:
   tmp-data:
   log-data:

@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
-  has_many_attached :post_pictures
+  has_many_attached :post_pictures, dependent: :purge_later
 
   attribute :new_post_pictures
   attribute :remove_post_pictures

@@ -1,24 +1,44 @@
-# README
+# myself
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 概要
+myselfは感じたことを思うままに発信する記事投稿サービスです。
 
-Things you may want to cover:
+# こだわったポイント
+  * 外観はシンプルかつレスポンシブに対応したデザインである。
+  * ストロングパラメータ、reCHAPTCHA認証を採用し、セキュリティ面を強化した。
+  * 実際の現場で使用されているDockerやAWSを使用した。
+  * 独学で全て作成した。
 
-* Ruby version
+# 機能
+* ユーザーの登録(reCHAPTCHA認証)、編集、削除、閲覧、検索
+* ユーザーのログイン機能
+* ユーザーのフォローフォロワー機能
+* 投稿の新規作成、編集、削除、閲覧
+* 投稿に画像の追加、変更、削除
+* 投稿に"いいね"を追加
+* 管理者によるユーザーおよび投稿の管理機能(名前空間)
+* ページネーション機能
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 使用技術
+* Ruby 2.6.3
+* Ruby on Rails 5.2.0
+  フレームワークによる機能の充実さ、技術資料が充実している点で採用しました。
+* HTML
+* CSS
+* javascript
+* jquery
+  アプリケーション内の動的アニメーション実現のため採用しました。
+* bootstrap 4.1.3
+  統一感のあるデザインを実現でき、レスポンシブデザインへの対応も簡易的であるため採用しました。
+* mysql 5.7.31
+* Rspec
+  バリテーションテストを行うため採用しました。
+* Docker
+  ローカル環境に左右されず開発環境を構築でき、本番環境移行時への負担も少ないため採用しました。
+* AWS(EC2,RDS,S3,ALB)
+  アプリケーションを本番環境でデプロイするためAWSを採用しました。
+  EC2でサーバーを構築し、データベースはRDSで構築しました。
+  アプリケーション内で保存された画像はS3バケット内へ保存しております。
+  https化を行うためALBを採用しております。
+* 外部API(Google reCAPTCHA)
+  新規ユーザーを登録する際、悪質なアクセスを制限するためGoogle reCAPTCHAを採用しております。

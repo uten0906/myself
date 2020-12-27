@@ -23,38 +23,34 @@
       <div class="mb-1">
         <h3>性別</h3>
         <% if @user.sex == 1 %>
-          <h4 class="pl-3">男</h4>
+          <h4 class="pl-3">男性</h4>
         <% elsif @user.sex == 2 %>
-          <h4 class="pl-3">女</h4>
+          <h4 class="pl-3">女性</h4>
         <% else %>
           <h4 class="pl-3">その他</h4>
         <% end %>
       </div>
     </div>
   </div>
-  <div class="d-block">
-    <div class="my-3">
-      <div class="d-flex justify-content-center">
-        <%= link_to "フォロー中(#{@user.followings.count})", followings_user_path(@user), class:"btn btn-info btn-lg w-200px mr-3 mr-md-5" %>
-        <%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user), class:"btn btn-info btn-lg w-200px" %>
-      </div>
+  <div class="d-flex justify-content-center my-3">
+    <div id="following_count">
+      <%= link_to "フォロー中(#{@user.followings.count})", followings_user_path(@user),
+        class:"btn btn-info w-150px mr-3 mr-md-5" %>
     </div>
-    <div class="">
-      <div class="d-flex justify-content-center">
-        <% if current_user && @user != current_user %>
-          <% if current_user.following?(@user) %>
-            <%= form_with(model: current_user.following_relationships.find_by(following_id: @user.id), method: :delete) do |f| %>
-              <%= f.hidden_field :following_id %>
-              <%= f.submit "フォローをやめる", class: "btn btn-outline-secondary btn-lg w-200px" %>
-            <% end %>
-          <% else %>
-            <%= form_with(model: current_user.following_relationships.build) do |f| %>
-              <%= f.hidden_field :following_id, value: @user.id %>
-              <%= f.submit "フォローする", class: "btn btn-outline-secondary btn-lg w-200px" %>
-            <% end %>
-          <% end %>
+    <div id="follower_count">
+      <%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user),
+        class:"btn btn-info w-150px" %>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center my-3">
+    <% if current_user && @user != current_user %>
+      <div id="follow_form">
+        <% if current_user.following?(@user) %>
+          <%= render "unfollow", user: @user %>
+        <% else %>
+          <%= render "follow", user: @user %>
         <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

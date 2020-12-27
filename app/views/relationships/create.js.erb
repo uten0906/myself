@@ -1,0 +1,7 @@
+$("#follow_form_<%= @user.id %>").html("<%= j(render partial: 'users/unfollow', locals: { user: @user }) %>");
+$("#follow_form").html("<%= j(render partial: 'users/unfollow', locals: { user: @user }) %>");
+
+$("#following_count_<%= @user.id %>").html('<%= link_to "フォロー中(#{@user.followings.count})", followings_user_path(@user), class:"btn btn-info w-150px mr-5" %>');
+$("#follower_count_<%= @user.id %>").html('<%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user), class:"btn btn-info w-150px" %>');
+$("#following_count").html('<%= link_to "フォロー中(#{@user.followings.count})", followings_user_path(@user), class:"btn btn-info btn-lg w-150px mr-3 mr-md-5" %>');
+$("#follower_count").html('<%= link_to "フォロワー(#{@user.followers.count})", followers_user_path(@user), class:"btn btn-info btn-lg w-150px" %>');

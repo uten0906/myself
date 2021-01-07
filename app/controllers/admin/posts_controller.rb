@@ -55,14 +55,19 @@ class Admin::PostsController < Admin::Base
   def like
     @post = Post.find(params[:id])
     current_user.liked_posts << @post
-    flash[:notice] = "いいねをしました。"
-    redirect_back(fallback_location: root_path)
+    respond_to do |format|
+      format.html {redirect_back(fallback_location: root_path)}
+      format.js
+    end
   end
 
   def unlike
+    @post = Post.find(params[:id])
     current_user.liked_posts.destroy(Post.find(params[:id]))
-    flash[:notice] = "いいねを削除しました。"
-    redirect_back(fallback_location: root_path)
+    respond_to do |format|
+      format.html {redirect_back(fallback_location: root_path)}
+      format.js
+    end
   end
 
   def liked

@@ -1,0 +1,6 @@
+<span>★<%= post.likes.count %></span>
+<% if current_user && current_user.likable_for?(post) %>
+  <%= link_to "★いいねをする", [:like, post], method: :patch, remote: true %>
+<% elsif current_user && current_user.unlikable_for?(post) %>
+  <%= link_to "★いいねを削除する", [:unlike, post], method: :patch, remote: true %>
+<% end %>

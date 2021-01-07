@@ -27,13 +27,8 @@
             </p>
             <div class="d-flex d-row justify-content-between">
               <div class="d-flex d-row">
-                <div class="like">
-                  <span>★<%= post.likes.count %></span>
-                  <% if current_user && current_user.likable_for?(post) %>
-                    <%= link_to "★いいねをする", [:like, post], method: :patch, class: "button" %>
-                  <% elsif current_user && current_user.unlikable_for?(post) %>
-                    <%= link_to "★いいねを削除する", [:unlike, post], method: :patch, data: { confirm: "削除しますか?"} %>
-                  <% end %>
+                <div id="like_button_<%= post.id %>">
+                  <%= render "shared/like_button", post: post %>
                 </div>
                 <% if post.post_pictures.attached? %>
                   <p class="ml-2 text-info">画像有</p>
